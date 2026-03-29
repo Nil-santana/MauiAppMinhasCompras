@@ -18,7 +18,7 @@
             <Picker.Items>
                 <x:String>Alimentos</x:String>
                 <x:String>Higiene</x:String>
-                <x:String>limpeza</x:String>
+                <x:String>Limpeza</x:String>
                 <x:String>Outros</x:String>
             </Picker.Items>
 

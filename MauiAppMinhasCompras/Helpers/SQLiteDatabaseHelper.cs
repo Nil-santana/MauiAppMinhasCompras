@@ -23,7 +23,7 @@ namespace MauiAppMinhasCompras.Helpers
         public Task<List<Produto>> Update(Produto p) 
         {
             string sql = "UPDATE Produto SET Descricao=?, " +
-                         "Quantidade=?, Preco=?, categoria=? WHERE Id=?";
+                         "Quantidade=?, Preco=?, Categoria=? WHERE Id=?";
                          return _conn.QueryAsync<Produto>(
                          sql, p.Descricao, p.Quantidade, p.Preco, p.Categoria, p.Id);
 
@@ -47,13 +47,24 @@ namespace MauiAppMinhasCompras.Helpers
 
         public Task<List<Produto>> Search(string q)
         {
-            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE Descricao LIKE '%" + q + "%'";
             return _conn.QueryAsync<Produto>(sql);
         }
 
         internal async Task<List<RelatorioItem>> GetTotalPorCategoria()
         {
-            throw new NotImplementedException();
+            var todos = await _conn.Table<Produto>().ToListAsync();
+            return todos.GroupBy(p =>p.Categoria)
+                .Select (g => new RelatorioItem { Categoria = g.Key ?? "Outros", 
+                    Total = g.Sum(p=> p.Total), Quantidade = g.Count () })
+                .OrderByDescending( r => r.Total) .ToList();    
+            
         }
+    }
+    public class RelatorioItem
+    {
+        public string Categoria { get; set; }
+        public double Total { get; set; }
+        public int Quantidade { get; set; }
     }
 }

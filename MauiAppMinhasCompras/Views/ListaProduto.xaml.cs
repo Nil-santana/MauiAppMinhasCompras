@@ -153,9 +153,16 @@ public partial class ListaProduto : ContentPage
 		}
     }
 
-    private void ToolbarItem_Clicked_2(object sender, EventArgs e)
+    private async void ToolbarItem_Clicked_2(object sender, EventArgs e)
     {
-
+		try
+		{
+			await Navigation.PushAsync(new Views.Relatorio());
+        }
+		catch (Exception ex)
+		{
+			await DisplayAlert("Ops", ex.Message, "OK");
+		}
     }
 
     private async void pickerCategoria_SelectedIndexChanged(object sender, EventArgs e)

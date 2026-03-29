@@ -9,7 +9,7 @@ public partial class Relatorio : ContentPage
         try
         {
             
-            List<RelatorioItem> itens =
+            List<MauiAppMinhasCompras.Helpers.RelatorioItem> itens =
                 await App.Db.GetTotalPorCategoria();
             
             lst_relatorio.ItemsSource = itens;

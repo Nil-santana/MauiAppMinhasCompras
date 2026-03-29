@@ -26,7 +26,7 @@
         <Frame Padding="5" Margin="10, 5, 10, 0"
                BorderColor="{StaticResource Gray200}">
             <Picker x:Name="pickerCategoria"
-                    Title="Filtrar por categoria"
+                    Title="Filtrar por categoria (ex: Alimentos)..."
                     SelectedIndexChanged="pickerCategoria_SelectedIndexChanged">
                 <Picker.Items>
                     <x:String>Todas</x:String>
