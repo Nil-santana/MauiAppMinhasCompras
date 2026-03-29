@@ -11,6 +11,20 @@
     </ContentPage.ToolbarItems>
     
     <VerticalStackLayout Spacing="10" Padding="10">
+
+        <Label Text="Categoria"/>
+        <Picker x:Name="pickerCategoria">
+
+            <Picker.Items>
+                <x:String>Alimentos</x:String>
+                <x:String>Higiene</x:String>
+                <x:String>limpeza</x:String>
+                <x:String>Outros</x:String>
+            </Picker.Items>
+
+
+        </Picker>
+        
         <Label Text="Descrição do Poduto:" />
         <Entry x:Name="txt_descricao" />
 
@@ -20,7 +34,9 @@
 
         <Label Text="Preço Unitário:" />
         <Entry x:Name="txt_preco" Keyboard="Numeric"/>
-        
+
        
+            
+
     </VerticalStackLayout>
 </ContentPage>
